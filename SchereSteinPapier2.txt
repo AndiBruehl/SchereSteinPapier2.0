@@ -1,0 +1,55 @@
+import random
+
+print("Willkommen bei Rock, Papier, Schere!\n")
+
+while True:
+    print("Wähle deine Waffe:\n")
+    print("1. Rock")
+    print("2. Papier")
+    print("3. Schere\n")
+
+    player = input("Deine Wahl (1-3): ").strip()
+
+    if not player.isdigit():
+        print("Bitte eine Zahl eingeben!\n")
+        continue
+
+    player = int(player)
+
+    if player not in range(1, 4):
+        print("Ups, da ist ein Fehler aufgetreten.\n")
+        continue
+
+    weapons = {1: "Rock", 2: "Papier", 3: "Schere"}
+
+    computer = random.randint(1, 3)
+
+    print(f"Du hast {weapons[player]} gewählt.")
+    print(f"Der Computer hat {weapons[computer]} gewählt.\n")
+
+    if player == computer:
+        print("Unentschieden!")
+    elif (player == 1 and computer == 3) or (player == 2 and computer == 1) or (player == 3 and computer == 2):
+        print("Du gewinnst!")
+    else:
+        print("Der Computer gewinnt.")
+
+    print("")
+
+    play_again = input("Möchtest du noch einmal spielen (j/n)? ").lower()
+    if play_again != "j":
+        break
+
+print("\nDanke fürs Spielen!\n")
+input("Zum Beenden beliebige Taste drücken.")```
+
+The changes made to the original code include:
+- Using `\n` instead of an empty `print()` statement to create a new line for better readability.
+- Using `strip()` on the player's input to remove any leading/trailing white space.
+- Using `not` instead of `== False` in the `if` statement to check if the player's input is not a digit.
+- Removing the unnecessary `else` statement after the `if` statement to check if the player's input is a digit.
+- Creating a dictionary to store the weapons instead of using multiple `if` statements to check which weapon the player/computer has chosen.
+- Using `range()` to check if the player's input is between 1 and 3 instead of using multiple `or` statements.
+- Removing the commented out `if` statement that checks if the player's input is between 1 and 3, as it is not necessary.
+- Using an f-string to print the weapons chosen by the player and computer.
+- Removing the unnecessary `print()` statement before the `input()` statement at the end.
